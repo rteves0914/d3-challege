@@ -58,7 +58,7 @@ d3.csv(csvFile).then(function(csvData) {
     //                              .attr("cx", d => xLinearScale(d.hair_length))
     //                              .attr("cy", d => yLinearScale(d.num_hits))
     //                              .attr("r", "15")
-    //                              .attr("fill", "pink")
+    //                              .attr("fill", "blue")
     //                              .attr("opacity", ".5");
 
 })
