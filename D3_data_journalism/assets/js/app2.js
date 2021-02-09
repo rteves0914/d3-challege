@@ -1,4 +1,4 @@
-var csvFile = '../data/data.csv'
+var csvFile = 'assets/data/data.csv'
 
 // Create svg canvas and margins
 var svgWidth = 1000;
@@ -6,7 +6,7 @@ var svgHeight = 500;
 
 var margin = {
     top: 50,
-    bottom: 50,
+    bottom: 80,
     left: 100,
     right: 100
 };
@@ -14,7 +14,7 @@ var width = svgWidth - margin.left - margin.right;
 var height = svgHeight - margin.top - margin.bottom;
 
 // Use d3 to append svg group that will hold chart
-var svg = d3.select(".scatter")
+var svg = d3.select("#scatter")
     .append("svg")
     .attr("width", svgWidth)
     .attr("height", svgHeight);
@@ -58,8 +58,22 @@ d3.csv(csvFile).then(function (csvData) {
         .attr("cx", d => xLinearScale(d.poverty))
         .attr("cy", d => yLinearScale(d.healthcare))
         .attr("r", "15")
-        .attr("fill", "blue")
+        .attr("class", "stateCircle")
         .attr("opacity", ".5");
+
+    // Create the abbreviation insdie the circles
+    var abbrevGroup = chartGroup.selectAll("stateText")
+        .data(csvData);
+
+    abbrevGroup.enter()
+        .append("text")
+        .attr("class", "stateText")
+        .attr("x", d => xLinearScale(d.poverty))
+        .attr("y", d => yLinearScale(d.healthcare))
+        .style("text-anchor", "middle")
+        .attr("dy", 4)
+        .text(d => d.abbr)
+        .attr("fill-opacity", 1);
 
     // Initialize and create tool tip
     var toolTip = d3.tip()
