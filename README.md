@@ -5,4 +5,4 @@ In this project, I pull in data from the US Census Bureau about poverty, age, in
 Using D3 packages within JavaScript, I am able to construct a plot to show the relationships. With the aid of HTML, we can publish this data onto a live server on the web.
 
 
-![](D3_data_journalism/D3viz.png)
+![](D3_data_journalism/d3viz.png)
